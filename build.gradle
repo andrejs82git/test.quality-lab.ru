@@ -1,0 +1,28 @@
+group 'andrejs82'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+test{
+    //option for chromedriver
+    systemProperty "webdriver.chrome.driver", "$projectDir/drivers/chromedriver.exe"
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+// Cf. Maven properties
+ext.junitVersion = '4.11'
+ext.seleniumVersion = '2.41.0'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:seleniumVersion
+}
