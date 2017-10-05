@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 class LoginPage {
+    public static final By LOGIN_INPUT = By.xpath("//span[@class='b-email__name']/input[@name='Username']");
+    public static final By PASSWORD_INPUT = By.xpath("//div[@data-field-name='Password']//input[@name='Password']");
+    public static final By LOGIN_BUTTON = By.xpath("//button[@data-uniqid='toolkit-1']");
     private WebDriver driver;
 
     public LoginPage(WebDriver driver) {
@@ -12,10 +15,9 @@ class LoginPage {
     }
 
     public InboxPage loginAndGetInboxPage(String login, String password){
-        By byLogin = By.xpath("//span[@class='b-email__name']/input[@name='Username']");
-        WebElement loginElem = driver.findElement(byLogin);
-        WebElement passwordElem = driver.findElement(By.xpath("//div[@data-field-name='Password']//input[@name='Password']"));
-        WebElement loginButton = driver.findElement(By.xpath("//button[@data-uniqid='toolkit-1']"));
+        WebElement loginElem = driver.findElement(LOGIN_INPUT);
+        WebElement passwordElem = driver.findElement(PASSWORD_INPUT);
+        WebElement loginButton = driver.findElement(LOGIN_BUTTON);
 
         loginElem.sendKeys(login);
         passwordElem.sendKeys(password);
